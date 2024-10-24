@@ -102,29 +102,6 @@ button:hover {
   color: #e74c3c;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  width: 80%;
-  border: 1px solid #888;
-  max-width: 500px;
-  border-radius: 10px;
-  text-align: center;
-}
-
 .close-button {
   color: #aaa;
   float: right;
