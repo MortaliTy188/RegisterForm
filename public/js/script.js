@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const password = document.getElementById("password");
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (checkInputs()) {
       const formData = {
@@ -16,24 +16,34 @@ document.addEventListener("DOMContentLoaded", function () {
         password: password.value.trim(),
       };
 
-
       fetch("/sign_up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), 
+        body: JSON.stringify(formData),
       })
         .then((response) => response.json())
         .then((data) => {
           if (data.message === "Регистрация прошла успешно") {
-            showModal(); 
+            showModal();
           } else {
-            console.error("Ошибка:", data.error);
+            Swal.fire({
+              icon: "error",
+              title: "Ошибка!",
+              text: data.error,
+              confirmButtonText: "OK",
+            });
           }
         })
         .catch((error) => {
           console.error("Ошибка при отправке данных:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Ошибка!",
+            text: "Что-то пошло не так при отправке данных",
+            confirmButtonText: "OK",
+          });
         });
     }
   });
@@ -109,18 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showModal() {
-    const modal = document.getElementById("successModal");
-    modal.style.display = "block";
-
-    const closeBtn = document.querySelector(".close-button");
-    closeBtn.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
+    Swal.fire({
+      icon: "success",
+      title: "Успешно!",
+      text: "Регистрация прошла успешно",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#77b7cd",
+    });
   }
 });

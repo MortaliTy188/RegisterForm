@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { Pool } = require("pg");
 
-
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
@@ -14,17 +13,13 @@ const pool = new Pool({
 const app = express();
 const port = 3000;
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.use(express.static("public"));
-
 
 app.post("/sign_up", function (req, res) {
   let { name, email, phone, password } = req.body;
-
 
   let insertQuery = `
     INSERT INTO users (name, email, phone, password) 
@@ -41,7 +36,6 @@ app.post("/sign_up", function (req, res) {
     }
   });
 });
-
 
 app.listen(3000, function () {
   console.log(`сервер запущен http://localhost:${port}`);
