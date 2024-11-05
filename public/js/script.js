@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         password: password.value.trim(),
       };
 
-      fetch("https://web-production-4065.up.railway.app//sign_up", {
+      fetch("https://web-production-4065.up.railway.app/sign_up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
