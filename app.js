@@ -4,7 +4,7 @@ const path = require("path");
 const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGO_URI;
-  /* "mongodb+srv://test:2N97RKCRTAKv@users.eob8v.mongodb.net/?retryWrites=true&w=majority&appName=Users"; */
+  // "mongodb+srv://test:2N97RKCRTAKv@users.eob8v.mongodb.net/?retryWrites=true&w=majority&appName=Users";
 const client = new MongoClient(uri);
 
 const app = express();
