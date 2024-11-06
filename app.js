@@ -4,11 +4,18 @@ const path = require("path");
 const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGO_URI;
-  // "mongodb+srv://test:2N97RKCRTAKv@users.eob8v.mongodb.net/?retryWrites=true&w=majority&appName=Users";
+// "mongodb+srv://test:2N97RKCRTAKv@users.eob8v.mongodb.net/?retryWrites=true&w=majority&appName=Users";
 const client = new MongoClient(uri);
 
 const app = express();
-const port = process.env.PORT
+
+app.use(
+  cors({
+    origin: "https://www.kshh.me",
+  })
+);
+
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
